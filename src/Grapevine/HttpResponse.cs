@@ -114,6 +114,11 @@ namespace Grapevine
             Headers["Content-Encoding"] = CompressionProvider.ContentEncoding;
             return await CompressionProvider.CompressAsync(contents);
         }
+        
+        public void MarkSent() {
+            ResponseSent = true;
+            Advanced.Close();
+        }
 
         public async override Task SendResponseAsync(byte[] contents)
         {
@@ -136,8 +141,7 @@ namespace Grapevine
             }
             finally
             {
-                ResponseSent = true;
-                Advanced.Close();
+                MarkSent();
             }
         }
     }
