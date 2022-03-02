@@ -159,7 +159,15 @@ namespace Grapevine
             catch (Exception e)
             {
                 Logger.LogError(e, $"{context.Id}: An exception occured while routing request {context.Request.Name}");
-                await HandleErrorAsync(context, e);
+
+                try
+                {
+                    await HandleErrorAsync(context, e);
+                }
+                catch(System.Exception e2)
+                {
+                    Logger.LogError(e2, "Exception throwing routing exception");
+                }
             }
         }
 
