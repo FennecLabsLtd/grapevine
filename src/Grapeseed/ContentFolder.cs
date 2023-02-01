@@ -193,7 +193,7 @@ namespace Grapevine
 
                 context.Response.ContentType = ContentType.FindKey(Path.GetExtension(filepath).TrimStart('.').ToLower());
 
-                using (var stream = new FileStream(filepath, FileMode.Open))
+                using (var stream = new FileStream(filepath, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     await context.Response.SendResponseAsync(stream);
                 }
