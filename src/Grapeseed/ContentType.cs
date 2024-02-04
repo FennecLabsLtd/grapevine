@@ -20,7 +20,7 @@ namespace Grapevine
 
         public static ContentType Icon = new ContentType("image/x-icon");
 
-        public static ContentType JavaScript = new ContentType("application/javascript", false);
+        public static ContentType Js = new ContentType("application/javascript", false);
 
         public static ContentType Json = new ContentType("application/json", false);
 
